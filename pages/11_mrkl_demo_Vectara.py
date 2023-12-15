@@ -14,15 +14,16 @@ from langchain.prompts import ChatPromptTemplate
 from langchain.vectorstores import Vectara
 from langchain.utilities import GoogleSearchAPIWrapper
 
-os.environ["OPENAI_API_KEY"]    = st.secrets["OPENAI_API_KEY"]
-os.environ["APIFY_API_TOKEN"]   = st.secrets["APIFY_API_TOKEN"]
 
-os.environ["VECTARA_CUSTOMER_ID"] = st.secrets["VECTARA_CUSTOMER_ID"]
-os.environ["VECTARA_CORPUS_ID"] = st.secrets["VECTARA_CORPUS_ID"]
-os.environ["VECTARA_API_KEY"] = st.secrets["VECTARA_API_KEY"]
+st.write(os.environ["OPENAI_API_KEY"] == st.secrets["OPENAI_API_KEY"])
+st.write(os.environ["APIFY_API_TOKEN"] == st.secrets["APIFY_API_TOKEN"])
 
-os.environ["GOOGLE_API_KEY"]    = st.secrets["GOOGLE_API_KEY"]
-os.environ["GOOGLE_CSE_ID"]     = st.secrets["GOOGLE_CSE_ID"]
+st.write(os.environ["VECTARA_CUSTOMER_ID"] == st.secrets["VECTARA_CUSTOMER_ID"])
+st.write(os.environ["VECTARA_CORPUS_ID"] == st.secrets["VECTARA_CORPUS_ID"])
+st.write(os.environ["VECTARA_API_KEY"] == st.secrets["VECTARA_API_KEY"])
+
+st.write(os.environ["GOOGLE_API_KEY"] == st.secrets["GOOGLE_API_KEY"])
+st.write(os.environ["GOOGLE_CSE_ID"] == st.secrets["GOOGLE_CSE_ID"])
 
 class StreamHandler(BaseCallbackHandler):
     def __init__(self, container: st.delta_generator.DeltaGenerator, initial_text: str = ""):
