@@ -67,6 +67,7 @@ st.set_page_config(
 
 with st.sidebar:
     user_openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
+    
 
 language = ['Industry Outlook', 'Market Trends', 'Future of Semiconductor Technology', 'Industry Analysis', 'Market Research', 'Market Dynamics']
 selected_keywords = st.multiselect('Select Keyword', language)
