@@ -25,6 +25,8 @@ from langchain.utilities import GoogleSearchAPIWrapper
 # st.write(os.environ["GOOGLE_API_KEY"] == st.secrets["GOOGLE_API_KEY"])
 # st.write(os.environ["GOOGLE_CSE_ID"] == st.secrets["GOOGLE_CSE_ID"])
 
+os.environ["OPENAI_API_KEY"] == st.secrets.OPENAI_API_KEY
+
 # os.environ["VECTARA_CUSTOMER_ID"] = "3867765777"
 os.environ["VECTARA_CUSTOMER_ID"] = st.secrets.VECTARA_CUSTOMER_ID
 os.environ["VECTARA_CORPUS_ID"] = "4"
@@ -73,8 +75,8 @@ st.set_page_config(
 
 "# 🦜🔗 MRKL"
 
-with st.sidebar:
-    user_openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
+# with st.sidebar:
+#     user_openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
 
 
 language = ['Industry Outlook', 'Market Trends', 'Future of Semiconductor Technology', 'Industry Analysis', 'Market Research', 'Market Dynamics']
@@ -85,6 +87,8 @@ selected_keywords = st.multiselect('Select Keyword', language)
 # Setup credentials in Streamlit
 # user_openai_api_key = os.getenv("OPENAI_API_KEY")
 
+# Setup credentials in Streamlit
+user_openai_api_key = os.getenv("OPENAI_API_KEY")
 
 # Vectara Initialize
 vectara = Vectara(
