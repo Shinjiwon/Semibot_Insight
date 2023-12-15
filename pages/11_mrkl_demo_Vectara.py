@@ -145,7 +145,7 @@ knowledgeBase_qa = RetrievalQA.from_chain_type(
     chain_type_kwargs={"prompt": knowledgeBase_prompt}
 )
 
-search = GoogleSearchAPIWrapper()
+# search = GoogleSearchAPIWrapper()
 
 tools = [
      Tool(
