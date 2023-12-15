@@ -1,5 +1,10 @@
-altair
-numpy
-pandas
-pydeck
+#python 3.10.11
 streamlit
+cohere
+tiktoken
+openai
+langchain
+langchain_experimental
+pypdf
+pinecone-client
+numexpr
