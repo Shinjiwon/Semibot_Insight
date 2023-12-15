@@ -70,7 +70,7 @@ class PrintRetrievalHandler(BaseCallbackHandler):
 
 
 st.set_page_config(
-    page_title="MRKL", page_icon="🦜", layout="wide", initial_sidebar_state="collapsed"
+    page_title="MRKL", page_icon="🦜", layout="wide"
 )
 
 "# 🦜🔗 MRKL"
