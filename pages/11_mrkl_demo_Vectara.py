@@ -25,6 +25,13 @@ from langchain.utilities import GoogleSearchAPIWrapper
 # st.write(os.environ["GOOGLE_API_KEY"] == st.secrets["GOOGLE_API_KEY"])
 # st.write(os.environ["GOOGLE_CSE_ID"] == st.secrets["GOOGLE_CSE_ID"])
 
+os.environ["VECTARA_CUSTOMER_ID"] = "3867765777"
+os.environ["VECTARA_CORPUS_ID"] = "4"
+os.environ["VECTARA_API_KEY"] = "zwt_5olsEfDtFZv3qJayaAzoJUlqDOlNQz4t5FnXBg"
+
+os.environ["GOOGLE_API_KEY"]    = "AIzaSyC_GULKOkPFTFTI3GqSbd6v1U07LUJ4Ook"
+os.environ["GOOGLE_CSE_ID"]     = "334c6e9dd68da48e6"
+
 
 class StreamHandler(BaseCallbackHandler):
     def __init__(self, container: st.delta_generator.DeltaGenerator, initial_text: str = ""):
@@ -67,7 +74,7 @@ st.set_page_config(
 
 with st.sidebar:
     user_openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
-    
+
 
 language = ['Industry Outlook', 'Market Trends', 'Future of Semiconductor Technology', 'Industry Analysis', 'Market Research', 'Market Dynamics']
 selected_keywords = st.multiselect('Select Keyword', language)
