@@ -25,7 +25,8 @@ from langchain.utilities import GoogleSearchAPIWrapper
 # st.write(os.environ["GOOGLE_API_KEY"] == st.secrets["GOOGLE_API_KEY"])
 # st.write(os.environ["GOOGLE_CSE_ID"] == st.secrets["GOOGLE_CSE_ID"])
 
-os.environ["VECTARA_CUSTOMER_ID"] = "3867765777"
+# os.environ["VECTARA_CUSTOMER_ID"] = "3867765777"
+os.environ["VECTARA_CUSTOMER_ID"] = st.secrets.VECTARA_CUSTOMER_ID
 os.environ["VECTARA_CORPUS_ID"] = "4"
 os.environ["VECTARA_API_KEY"] = "zwt_5olsEfDtFZv3qJayaAzoJUlqDOlNQz4t5FnXBg"
 
