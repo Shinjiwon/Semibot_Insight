@@ -15,17 +15,6 @@ from langchain.vectorstores import Vectara
 from langchain.utilities import GoogleSearchAPIWrapper
 
 
-os.environ["OPENAI_API_KEY"]    = "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"
-os.environ["APIFY_API_TOKEN"]   = "apify_api_O9yOWpqB4NCvIwqkcDvRK5V0o4ivvL1IJTvE"
-
-os.environ["VECTARA_CUSTOMER_ID"] = "3867765777"
-os.environ["VECTARA_CORPUS_ID"] = "4"
-os.environ["VECTARA_API_KEY"] = "zwt_5olsEfDtFZv3qJayaAzoJUlqDOlNQz4t5FnXBg"
-
-os.environ["GOOGLE_API_KEY"]    = "AIzaSyC_GULKOkPFTFTI3GqSbd6v1U07LUJ4Ook"
-os.environ["GOOGLE_CSE_ID"]     = "334c6e9dd68da48e6"
-
-
 class StreamHandler(BaseCallbackHandler):
     def __init__(self, container: st.delta_generator.DeltaGenerator, initial_text: str = ""):
         self.container = container
