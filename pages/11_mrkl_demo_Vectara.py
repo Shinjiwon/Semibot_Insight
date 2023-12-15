@@ -15,15 +15,18 @@ from langchain.vectorstores import Vectara
 from langchain.utilities import GoogleSearchAPIWrapper
 
 
-st.write(os.environ["OPENAI_API_KEY"] == st.secrets["OPENAI_API_KEY"])
-st.write(os.environ["APIFY_API_TOKEN"] == st.secrets["APIFY_API_TOKEN"])
+# st.write(os.environ["OPENAI_API_KEY"] == st.secrets["OPENAI_API_KEY"])
+# st.write(os.environ["APIFY_API_TOKEN"] == st.secrets["APIFY_API_TOKEN"])
 
-st.write(os.environ["VECTARA_CUSTOMER_ID"] == st.secrets["VECTARA_CUSTOMER_ID"])
-st.write(os.environ["VECTARA_CORPUS_ID"] == st.secrets["VECTARA_CORPUS_ID"])
-st.write(os.environ["VECTARA_API_KEY"] == st.secrets["VECTARA_API_KEY"])
+# st.write(os.environ["VECTARA_CUSTOMER_ID"] == st.secrets["VECTARA_CUSTOMER_ID"])
+# st.write(os.environ["VECTARA_CORPUS_ID"] == st.secrets["VECTARA_CORPUS_ID"])
+# st.write(os.environ["VECTARA_API_KEY"] == st.secrets["VECTARA_API_KEY"])
 
-st.write(os.environ["GOOGLE_API_KEY"] == st.secrets["GOOGLE_API_KEY"])
-st.write(os.environ["GOOGLE_CSE_ID"] == st.secrets["GOOGLE_CSE_ID"])
+# st.write(os.environ["GOOGLE_API_KEY"] == st.secrets["GOOGLE_API_KEY"])
+# st.write(os.environ["GOOGLE_CSE_ID"] == st.secrets["GOOGLE_CSE_ID"])
+
+with st.sidebar:
+    user_openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
 
 class StreamHandler(BaseCallbackHandler):
     def __init__(self, container: st.delta_generator.DeltaGenerator, initial_text: str = ""):
@@ -70,7 +73,7 @@ selected_keywords = st.multiselect('Select Keyword', language)
 # filters = f"doc.keyword IN '{selected_keywords}'"
 
 # Setup credentials in Streamlit
-user_openai_api_key = os.getenv("OPENAI_API_KEY")
+# user_openai_api_key = os.getenv("OPENAI_API_KEY")
 
 
 # Vectara Initialize
@@ -80,10 +83,10 @@ vectara = Vectara(
         vectara_api_key = os.getenv("VECTARA_API_KEY")
     )
 # search_kwargs = {"k": 2, "fetch_k": 4, "filter":{filters}}
-# retriever = vectara.as_retriever(search_type="mmr", search_kwargs={"k": 2, "fetch_k": 4})
-# retriever = vectara.as_retriever(search_type="mmr", search_kwargs={"k": 2, "fetch_k": 4, "filter":filters})
-retriever = vectara.as_retriever(search_type="mmr", search_kwargs={"k": 2, "fetch_k": 4, "filter":{"doc.keyword = 'Semiconductor industry outlook'"}})
-# retriever = vectara.as_retriever(search_type="mmr", search_kwargs=search_kwargs)
+# retriever = vectara.as_retriever(search_type="similarity", search_kwargs={"k": 2, "fetch_k": 4})
+# retriever = vectara.as_retriever(search_type="similarity", search_kwargs={"k": 2, "fetch_k": 4, "filter":filters})
+retriever = vectara.as_retriever(search_type="similarity", search_kwargs={"k": 2, "fetch_k": 4, "filter":{"doc.keyword = 'Semiconductor industry outlook'"}})
+# retriever = vectara.as_retriever(search_type="similarity", search_kwargs=search_kwargs)
 
 
 if user_openai_api_key:
