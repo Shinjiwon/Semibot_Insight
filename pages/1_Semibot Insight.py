@@ -76,7 +76,12 @@ vectara = Vectara(
     )
 
 # Setup Keywords
-language = ['Semiconductor industry outlook', 'Market Trends', 'Future of Semiconductor Technology', 'Industry Analysis', 'Market Research', 'Market Dynamics']
+language = ['Semiconductor industry outlook', 'Semiconductor market trends', 'Future of semiconductor technology', 'Semiconductor industry analysis'
+            , 'Semiconductor market research', 'Semiconductor market dynamics', 'Semiconductor market challenges', 'Global semiconductor demand'
+            , 'Semiconductor market size and share', 'Semiconductor market drivers', 'Semiconductor industry developments', 'Semiconductor market disruptions'
+            , 'Semiconductor manufacturing in South Korea', 'South Korea semiconductor exports', 'South Korea semiconductor supply chain'
+            , 'Emerging semiconductor technologies in Korea', 'South Korean semiconductor innovations', 'Korean semiconductor trade policies'
+            , 'South Korean semiconductor challenges']
 selected_keywords = st.multiselect('Select Keyword', language)
 
 # filters = f"doc.keyword IN '{selected_keywords}'"
