@@ -172,7 +172,7 @@ if with_clear_container(submit_clicked):
     output_container = output_container.container()
     output_container.chat_message("user").write(user_input)
 
-    answer_container = output_container.chat_message("assistant", avatar="🦜")
+    answer_container = output_container.chat_message("assistant", avatar="🤖")
     st_callback = StreamlitCallbackHandler(answer_container)
 
     # If we've saved this question, play it back instead of actually running LangChain
