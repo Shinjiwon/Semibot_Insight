@@ -190,11 +190,7 @@ if with_clear_container(submit_clicked):
     answer_container.subheader(answer)
 
     for doc in found_docs:
-        on = st.toggle('Activate feature')
-
-        if on:
-            st.write('View Sources')
-            answer_container.write(f"Page Content:{doc.page_content}")
-            answer_container.write(f"Metadata:{doc.metadata}")
-            # answer_container.toggle(doc.metadata)
-            answer_container.divider()
+        answer_container.write(f"Page Content:{doc.page_content}")
+        answer_container.write(f"Metadata:{doc.metadata}")
+        # answer_container.toggle(doc.metadata)
+        answer_container.divider()
