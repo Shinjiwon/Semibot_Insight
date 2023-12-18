@@ -48,10 +48,10 @@ class PrintRetrievalHandler(BaseCallbackHandler):
 
 
 st.set_page_config(
-    page_title="MRKL", page_icon="🦜", layout="wide"
+    page_title="Semiconductor Chat", page_icon="🤖", layout="wide"
 )
 
-"# 🦜🔗 MRKL"
+"# 🤖🔗 Semiconductor Chat"
 
 # with st.sidebar:
 #     user_openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
