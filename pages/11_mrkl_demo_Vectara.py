@@ -75,9 +75,11 @@ st.set_page_config(
 
 "# 🦜🔗 MRKL"
 
-with st.sidebar:
-    user_openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
+# with st.sidebar:
+#     user_openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
 
+# st.write(os.environ["OPENAI_API_KEY"] == st.secrets["OPENAI_API_KEY"])
+os.environ["OPENAI_API_KEY"] = st.secrets.OPENAI_API_KEY
 
 language = ['Industry Outlook', 'Market Trends', 'Future of Semiconductor Technology', 'Industry Analysis', 'Market Research', 'Market Dynamics']
 selected_keywords = st.multiselect('Select Keyword', language)
@@ -85,10 +87,8 @@ selected_keywords = st.multiselect('Select Keyword', language)
 # filters = f"doc.keyword IN '{selected_keywords}'"
 
 # Setup credentials in Streamlit
-# user_openai_api_key = os.getenv("OPENAI_API_KEY")
+user_openai_api_key = os.getenv("OPENAI_API_KEY")
 
-# Setup credentials in Streamlit
-# user_openai_api_key = os.getenv("OPENAI_API_KEY")
 
 # Vectara Initialize
 vectara = Vectara(
