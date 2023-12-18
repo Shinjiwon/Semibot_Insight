@@ -75,6 +75,7 @@ vectara = Vectara(
         vectara_api_key = os.getenv("VECTARA_API_KEY")
     )
 
+# Setup Keywords
 language = ['Industry Outlook', 'Market Trends', 'Future of Semiconductor Technology', 'Industry Analysis', 'Market Research', 'Market Dynamics']
 selected_keywords = st.multiselect('Select Keyword', language)
 
@@ -82,9 +83,10 @@ selected_keywords = st.multiselect('Select Keyword', language)
 
 # search_kwargs = {"k": 2, "fetch_k": 4, "filter":{filters}}
 
-# retriever = vectara.as_retriever(search_type="similarity", search_kwargs={"k": 2, "fetch_k": 4})
+# Define retriever
+retriever = vectara.as_retriever(search_type="similarity", search_kwargs={"k": 2, "fetch_k": 4})
 # retriever = vectara.as_retriever(search_type="similarity", search_kwargs={"k": 2, "fetch_k": 4, "filter":filters})
-retriever = vectara.as_retriever(search_type="similarity", search_kwargs={"k": 2, "fetch_k": 4, "filter":{"doc.keyword = 'Semiconductor industry outlook'"}})
+# retriever = vectara.as_retriever(search_type="similarity", search_kwargs={"k": 2, "fetch_k": 4, "filter":{"doc.keyword = 'Semiconductor industry outlook'"}})
 # retriever = vectara.as_retriever(search_type="similarity", search_kwargs=search_kwargs)
 
 if user_openai_api_key:
@@ -176,12 +178,16 @@ if with_clear_container(submit_clicked):
     # If we've saved this question, play it back instead of actually running LangChain
     # (so that we don't exhaust our API calls unnecessarily)
     answer = mrkl.run(user_input, callbacks=[st_callback])
-    source_documents = retriever.get_relevant_documents(
-    user_input
-    )
     
-    extracted_data = [{'page_content': document.page_content, 'metadata': document.metadata} for document in source_documents]
+    keyword_string = ' '.join(selected_keywords)
+    filters = f"doc.keyword = '{keyword_string}'"
+    found_docs = vectara.similarity_search(
+    user_input, n_sentence_context=0, filter=filters
+    )
 
     answer_container.write(answer)
-    answer_container.write(extracted_data)
+
+    for doc in found_docs:
+        answer_container.text("Page Content:", doc.page_content)
+        answer_container.text("Metadata:", doc.metadata)
     # answer_container.text(extracted_data)
