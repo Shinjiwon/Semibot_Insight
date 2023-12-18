@@ -189,8 +189,23 @@ if with_clear_container(submit_clicked):
     # answer_container.subheader(f':rainbow[{answer}]')
     answer_container.subheader(answer)
 
-    for doc in found_docs:
-        answer_container.write(f"Page Content:{doc.page_content}")
-        answer_container.write(f"Metadata:{doc.metadata}")
-        # answer_container.toggle(doc.metadata)
+    # for doc in found_docs:
+    #     answer_container.write(f"Page Content:{doc.page_content}")
+    #     answer_container.write(f"Metadata:{doc.metadata}")
+    #     # answer_container.toggle(doc.metadata)
+    #     answer_container.divider()
+
+    # Assuming found_docs is a list of documents
+    for idx, doc in enumerate(found_docs):
+        # Create a toggle for each document
+        toggle_key = f"Toggle_Metadata_{idx}"
+        toggle_state = st.checkbox(f"Toggle Metadata {idx + 1}", key=toggle_key)
+
+        # Display page content always
+        answer_container.write(f"Page Content: {doc.page_content}")
+
+        # Display metadata if the toggle is turned on
+        if toggle_state:
+            answer_container.write(f"Metadata: {doc.metadata}")
+
         answer_container.divider()
