@@ -185,7 +185,8 @@ if with_clear_container(submit_clicked):
     user_input, n_sentence_context=0, filter=filters
     )
 
-    answer_container.write(answer)
+    # answer_container.write(answer)
+    answer_container.markdown(':rainbow[answer]')
 
     for doc in found_docs:
         answer_container.write(f"Page Content:{doc.page_content}")
