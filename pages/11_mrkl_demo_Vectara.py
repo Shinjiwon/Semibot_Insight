@@ -14,7 +14,6 @@ from langchain.prompts import ChatPromptTemplate
 from langchain.vectorstores import Vectara
 from langchain.utilities import GoogleSearchAPIWrapper
 
-
 # st.write(os.environ["OPENAI_API_KEY"] == st.secrets["OPENAI_API_KEY"])
 # st.write(os.environ["APIFY_API_TOKEN"] == st.secrets["APIFY_API_TOKEN"])
 
@@ -28,13 +27,6 @@ from langchain.utilities import GoogleSearchAPIWrapper
 # os.environ["OPENAI_API_KEY"] = st.secrets.OPENAI_API_KEY
 
 # os.environ["VECTARA_CUSTOMER_ID"] = st.secrets.VECTARA_CUSTOMER_ID
-os.environ["VECTARA_CUSTOMER_ID"] = "3867765777"
-os.environ["VECTARA_CORPUS_ID"] = "4"
-os.environ["VECTARA_API_KEY"] = "zwt_5olsEfDtFZv3qJayaAzoJUlqDOlNQz4t5FnXBg"
-
-os.environ["GOOGLE_API_KEY"]    = "AIzaSyC_GULKOkPFTFTI3GqSbd6v1U07LUJ4Ook"
-os.environ["GOOGLE_CSE_ID"]     = "334c6e9dd68da48e6"
-
 
 class StreamHandler(BaseCallbackHandler):
     def __init__(self, container: st.delta_generator.DeltaGenerator, initial_text: str = ""):
@@ -78,17 +70,17 @@ st.set_page_config(
 # with st.sidebar:
 #     user_openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
 
-# st.write(os.environ["OPENAI_API_KEY"] == st.secrets["OPENAI_API_KEY"])
-os.environ["OPENAI_API_KEY"] = st.secrets.OPENAI_API_KEY
+os.environ["OPENAI_API_KEY"]      = st.secrets.OPENAI_API_KEY
 
-language = ['Industry Outlook', 'Market Trends', 'Future of Semiconductor Technology', 'Industry Analysis', 'Market Research', 'Market Dynamics']
-selected_keywords = st.multiselect('Select Keyword', language)
+os.environ["VECTARA_CUSTOMER_ID"] = st.secrets.VECTARA_CUSTOMER_ID
+os.environ["VECTARA_CORPUS_ID"]   = st.secrets.VECTARA_CORPUS_ID
+os.environ["VECTARA_API_KEY"]     = st.secrets.VECTARA_API_KEY
 
-# filters = f"doc.keyword IN '{selected_keywords}'"
+os.environ["GOOGLE_API_KEY"]      = st.secrets.GOOGLE_API_KEY
+os.environ["GOOGLE_CSE_ID"]       = st.secrets.GOOGLE_CSE_ID
 
 # Setup credentials in Streamlit
 user_openai_api_key = os.getenv("OPENAI_API_KEY")
-
 
 # Vectara Initialize
 vectara = Vectara(
@@ -96,12 +88,18 @@ vectara = Vectara(
         vectara_corpus_id=os.getenv("VECTARA_CORPUS_ID"),
         vectara_api_key = os.getenv("VECTARA_API_KEY")
     )
+
+language = ['Industry Outlook', 'Market Trends', 'Future of Semiconductor Technology', 'Industry Analysis', 'Market Research', 'Market Dynamics']
+selected_keywords = st.multiselect('Select Keyword', language)
+
+# filters = f"doc.keyword IN '{selected_keywords}'"
+
 # search_kwargs = {"k": 2, "fetch_k": 4, "filter":{filters}}
+
 # retriever = vectara.as_retriever(search_type="similarity", search_kwargs={"k": 2, "fetch_k": 4})
 # retriever = vectara.as_retriever(search_type="similarity", search_kwargs={"k": 2, "fetch_k": 4, "filter":filters})
 retriever = vectara.as_retriever(search_type="similarity", search_kwargs={"k": 2, "fetch_k": 4, "filter":{"doc.keyword = 'Semiconductor industry outlook'"}})
 # retriever = vectara.as_retriever(search_type="similarity", search_kwargs=search_kwargs)
-
 
 if user_openai_api_key:
     openai_api_key = user_openai_api_key
@@ -110,17 +108,14 @@ else:
     openai_api_key = "not_supplied"
     enable_custom = False
 
-
 # Setup memory for contextual conversation
 msgs = StreamlitChatMessageHistory()
 memory = ConversationBufferMemory(memory_key="chat_history", chat_memory=msgs, return_messages=True)
-
 
 # Setup LLM 
 llm = ChatOpenAI(
     model_name="gpt-3.5-turbo", openai_api_key=openai_api_key, temperature=0, streaming=True
 )
-
 
 # Create KnowledgeBase_Prompt
 knowledgeBase_template = """
@@ -149,7 +144,6 @@ HUMAN
   """
 knowledgeBase_prompt = ChatPromptTemplate.from_template(knowledgeBase_template)
 
-
 # retrieval qa chain
 knowledgeBase_qa = RetrievalQA.from_chain_type(
     llm=llm,
@@ -176,10 +170,8 @@ tools = [
     #  )
 ]
 
-
 # Initialize agent
 mrkl = initialize_agent(tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=True,memory=memory,handle_parsing_errors=True)
-
 
 with st.form(key="form"):
     
