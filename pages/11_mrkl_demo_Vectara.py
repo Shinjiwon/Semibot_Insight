@@ -188,6 +188,6 @@ if with_clear_container(submit_clicked):
     answer_container.write(answer)
 
     for doc in found_docs:
-        answer_container.text("Page Content:", doc.page_content)
-        answer_container.text("Metadata:", doc.metadata)
+        answer_container.write(f"Page Content:{doc.page_content}")
+        answer_container.write(f"Metadata:{doc.Metadata}")
     # answer_container.text(extracted_data)
