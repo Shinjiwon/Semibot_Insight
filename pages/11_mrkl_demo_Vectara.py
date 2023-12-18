@@ -76,7 +76,7 @@ vectara = Vectara(
     )
 
 # Setup Keywords
-language = ['Industry Outlook', 'Market Trends', 'Future of Semiconductor Technology', 'Industry Analysis', 'Market Research', 'Market Dynamics']
+language = ['Semiconductor industry outlook', 'Market Trends', 'Future of Semiconductor Technology', 'Industry Analysis', 'Market Research', 'Market Dynamics']
 selected_keywords = st.multiselect('Select Keyword', language)
 
 # filters = f"doc.keyword IN '{selected_keywords}'"
