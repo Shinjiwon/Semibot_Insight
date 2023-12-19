@@ -155,7 +155,7 @@ if with_clear_container(submit_clicked):
     # answer_container.subheader(answer)
 
     for doc in found_docs:
-        with st.expander("See Sources"):
+        with answer_container.expander("See Sources"):
             # answer_container.divider()
             answer_container.write(f"Page Content:{doc.page_content}")
             answer_container.write(f"Metadata:{doc.metadata}")
