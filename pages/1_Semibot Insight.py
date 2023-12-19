@@ -179,6 +179,7 @@ if with_clear_container(submit_clicked):
     
     keyword_string = ' '.join(selected_keywords)
     filters = f"doc.keyword = '{keyword_string}'"
+
     found_docs = vectara.similarity_search(
     user_input, n_sentence_context=0, filter=filters
     )
@@ -189,5 +190,5 @@ if with_clear_container(submit_clicked):
     for doc in found_docs:
         answer_container.write(f"Page Content:{doc.page_content}")
         answer_container.write(f"Metadata:{doc.metadata}")
-        # answer_container.toggle(doc.metadata)
+
         answer_container.divider()
