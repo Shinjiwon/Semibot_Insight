@@ -152,15 +152,9 @@ if with_clear_container(submit_clicked):
     )
 
     # answer_container.subheader(f':rainbow[{answer}]')
-    st.expander(f':rainbow[{answer}]')
-    # answer_container.subheader(answer)
+    answer_container.subheader(answer)
 
-    for idx, doc in enumerate(found_docs):
-        with answer_container.expander(f"Toggle Metadata {idx + 1}"):
-            answer_container.write(f"Page Content: {doc.page_content}")
-            answer_container.write(f"Metadata: {doc.metadata}")
-
-    # for doc in found_docs:
-        # # answer_container.divider()
-        # answer_container.write(f"Page Content:{doc.page_content}")
-        # answer_container.write(f"Metadata:{doc.metadata}")
+    for doc in found_docs:
+        answer_container.divider()
+        answer_container.write(f"Page Content:{doc.page_content}")
+        answer_container.write(f"Metadata:{doc.metadata}")
