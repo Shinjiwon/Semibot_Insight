@@ -151,7 +151,8 @@ if with_clear_container(submit_clicked):
     user_input, n_sentence_context=0, filter=filters
     )
 
-    answer_container.subheader(f':rainbow[{answer}]')
+    # answer_container.subheader(f':rainbow[{answer}]')
+    answer_container.expander(f':rainbow[{answer}]')
     # answer_container.subheader(answer)
 
     for idx, doc in enumerate(found_docs):
