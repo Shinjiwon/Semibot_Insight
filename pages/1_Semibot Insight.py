@@ -39,8 +39,8 @@ user_openai_api_key = os.getenv("OPENAI_API_KEY")
 # Vectara Initialize
 vectara = Vectara(
         vectara_customer_id = os.getenv("VECTARA_CUSTOMER_ID"),
-        vectara_corpus_id=os.getenv("VECTARA_CORPUS_ID"),
-        vectara_api_key = os.getenv("VECTARA_API_KEY")
+        vectara_corpus_id   = os.getenv("VECTARA_CORPUS_ID"),
+        vectara_api_key     = os.getenv("VECTARA_API_KEY")
     )
 
 # Setup Keywords
@@ -151,8 +151,8 @@ if with_clear_container(submit_clicked):
     user_input, n_sentence_context=0, filter=filters
     )
 
-    # answer_container.subheader(f':rainbow[{answer}]')
-    answer_container.subheader(answer)
+    answer_container.subheader(f':rainbow[{answer}]')
+    # answer_container.subheader(answer)
 
     for doc in found_docs:
         answer_container.write(f"Page Content:{doc.page_content}")
