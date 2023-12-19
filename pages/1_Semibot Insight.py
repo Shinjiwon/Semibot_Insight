@@ -154,12 +154,7 @@ if with_clear_container(submit_clicked):
     answer_container.subheader(f':rainbow[{answer}]')
     # answer_container.subheader(answer)
 
-    for idx, doc in enumerate(found_docs):
-        toggle_key = f"Toggle_Metadata_{idx}"
+    for doc in found_docs:
         answer_container.divider()
-
-        on = st.toggle('Activate feature', key=toggle_key)
-
-        if on:
-            answer_container.write(f"Page Content:{doc.page_content}")
-            answer_container.write(f"Metadata:{doc.metadata}")
+        answer_container.write(f"Page Content:{doc.page_content}")
+        answer_container.write(f"Metadata:{doc.metadata}")
