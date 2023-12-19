@@ -56,6 +56,7 @@ st.set_page_config(
 # with st.sidebar:
 #     user_openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
 
+# API_KEY Setting
 os.environ["OPENAI_API_KEY"]      = st.secrets.OPENAI_API_KEY
 
 os.environ["VECTARA_CUSTOMER_ID"] = st.secrets.VECTARA_CUSTOMER_ID
@@ -84,15 +85,8 @@ language = ['Semiconductor industry outlook', 'Semiconductor market trends', 'Fu
             , 'South Korean semiconductor challenges']
 selected_keywords = st.multiselect('Select Keyword', language)
 
-# filters = f"doc.keyword IN '{selected_keywords}'"
-
-# search_kwargs = {"k": 2, "fetch_k": 4, "filter":{filters}}
-
 # Define retriever
 retriever = vectara.as_retriever(search_type="similarity", search_kwargs={"k": 2, "fetch_k": 4})
-# retriever = vectara.as_retriever(search_type="similarity", search_kwargs={"k": 2, "fetch_k": 4, "filter":filters})
-# retriever = vectara.as_retriever(search_type="similarity", search_kwargs={"k": 2, "fetch_k": 4, "filter":{"doc.keyword = 'Semiconductor industry outlook'"}})
-# retriever = vectara.as_retriever(search_type="similarity", search_kwargs=search_kwargs)
 
 if user_openai_api_key:
     openai_api_key = user_openai_api_key
@@ -167,7 +161,6 @@ tools = [
 mrkl = initialize_agent(tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, verbose=True,memory=memory,handle_parsing_errors=True)
 
 with st.form(key="form"):
-    
     user_input = st.text_input("Or, ask your own question")
     submit_clicked = st.form_submit_button("Submit Question")
 
@@ -190,7 +183,6 @@ if with_clear_container(submit_clicked):
     user_input, n_sentence_context=0, filter=filters
     )
 
-    # answer_container.write(answer)
     # answer_container.subheader(f':rainbow[{answer}]')
     answer_container.subheader(answer)
 
