@@ -156,8 +156,8 @@ if with_clear_container(submit_clicked):
 
     for idx, doc in enumerate(found_docs):
         with answer_container.expander(f"Toggle Metadata {idx + 1}"):
-            answer_container.write(doc[idx]["page_content"])
-            answer_container.write(doc[idx]["metadata"])
+            answer_container.write(f"Page Content: {doc.page_content}")
+            answer_container.write(f"Metadata: {doc.metadata}")
 
     # for doc in found_docs:
         # # answer_container.divider()
