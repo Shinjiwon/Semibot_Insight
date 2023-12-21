@@ -15,10 +15,10 @@ from langchain.vectorstores import Vectara
 from langchain.utilities import GoogleSearchAPIWrapper
 
 st.set_page_config(
-    page_title="Semibot Insight", page_icon="🤖", layout="wide"
+    page_title="SemiSmart InsightBot", page_icon="🤖", layout="wide"
 )
 
-"# 🤖🔗 Semibot Insight"
+"# 🤖🔗 SemiSmart InsightBot"
 
 # with st.sidebar:
 #     user_openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
