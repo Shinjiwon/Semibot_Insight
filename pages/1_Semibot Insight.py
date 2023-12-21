@@ -157,7 +157,7 @@ if with_clear_container(submit_clicked):
 
 
     for i, doc in enumerate(found_docs):
-        expander = st.expander(f"See Resource {i + 1}")
+        expander = st.expander(f"Resource {i + 1}")
         expander.markdown(f"Page Content: ***{doc.page_content}***")
         expander.markdown(f":blue[Metadata:{doc.metadata}]")
     
