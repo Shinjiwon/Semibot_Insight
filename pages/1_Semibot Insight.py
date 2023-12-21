@@ -162,8 +162,9 @@ if with_clear_container(submit_clicked):
 
     for i, doc in enumerate(found_docs):
         expander = st.expander(f"See Resource {i + 1}")
-        expander.write(f"Page Content: {doc.page_content}")
-        expander.write(f':rainbow[{doc.metadata}]')
+        expander.markdown(f"Page Content: ***{doc.page_content}***")
+        expander.write('Metadata: ' + f':rainbow[{doc.metadata}]')
+        # expander.write(f"Page Content: {doc.page_content}")
         # expander.write(f"Metadata: {doc.metadata}")
 
     # for doc in found_docs:
