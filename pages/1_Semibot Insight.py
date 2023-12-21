@@ -148,7 +148,7 @@ if with_clear_container(submit_clicked):
     filters = f"doc.keyword = '{keyword_string}'"
 
     found_docs = vectara.similarity_search(
-    user_input, n_sentence_context=0, filter=filters
+    user_input, k=7, n_sentence_context=0, filter=filters
     )
 
     # answer_container.subheader(f':rainbow[{answer}]')
