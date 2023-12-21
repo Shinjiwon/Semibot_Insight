@@ -155,10 +155,16 @@ if with_clear_container(submit_clicked):
     answer_container.subheader(answer)
 
 
-    for doc in found_docs:
-        expander = st.expander("See Resource")
-        expander.write(f"Page Content:{doc.page_content}")
-        expander.write(f"Metadata:{doc.metadata}")
+    # for doc in found_docs:
+    #     expander = st.expander("See Resource")
+    #     expander.write(f"Page Content:{doc.page_content}")
+    #     expander.write(f"Metadata:{doc.metadata}")
+
+    for i, doc in enumerate(found_docs):
+        expander = st.expander(f"See Resource {i + 1}")
+        expander.write(f"Page Content: {doc.page_content}")
+        expander.write(f':rainbow[{doc.metadata}]')
+        # expander.write(f"Metadata: {doc.metadata}")
 
     # for doc in found_docs:
     #     answer_container.divider()
