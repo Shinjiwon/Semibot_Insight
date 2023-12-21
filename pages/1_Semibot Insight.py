@@ -160,13 +160,3 @@ if with_clear_container(submit_clicked):
         expander = st.expander(f"Resource {i + 1}")
         expander.markdown(f"Page Content: ***{doc.page_content}***")
         expander.markdown(f":blue[Metadata:{doc.metadata}]")
-    
-    # for doc in found_docs:
-    #     expander = st.expander("See Resource")
-    #     expander.write(f"Page Content:{doc.page_content}")
-    #     expander.write(f"Metadata:{doc.metadata}")
-
-    # for doc in found_docs:
-    #     answer_container.divider()
-    #     answer_container.write(f"Page Content:{doc.page_content}")
-    #     answer_container.write(f"Metadata:{doc.metadata}")
