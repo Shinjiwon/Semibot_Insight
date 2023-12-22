@@ -53,7 +53,8 @@ language = ['Semiconductor industry outlook', 'Semiconductor market trends', 'Fu
 selected_keywords = st.multiselect('Select Keyword', language)
 
 # Define retriever
-retriever = vectara.as_retriever(search_type="similarity", search_kwargs={"k": 2, "fetch_k": 4})
+# retriever = vectara.as_retriever(search_type="similarity", search_kwargs={"k": 2, "fetch_k": 4})
+retriever = vectara.as_retriever(search_type="similarity", search_kwargs={"k": 2})
 
 if user_openai_api_key:
     openai_api_key = user_openai_api_key
