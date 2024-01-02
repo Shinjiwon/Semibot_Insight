@@ -8,3 +8,4 @@ langchain_experimental
 pypdf
 pinecone-client
 numexpr
+pymssql
