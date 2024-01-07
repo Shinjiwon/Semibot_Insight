@@ -24,7 +24,6 @@ os.environ["DB_USER"]   = st.secrets.DB_USER
 os.environ["DB_PW"]     = st.secrets.DB_PW
 os.environ["DB_SERVER"] = st.secrets.DB_SERVER
 os.environ["DB_NAME"]   = st.secrets.DB_NAME
-os.environ["DB_URL"]    = st.secrets.DB_URL
 
 #Datasource
 database_user     = os.getenv("DB_USER")
