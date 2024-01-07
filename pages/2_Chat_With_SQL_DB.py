@@ -36,59 +36,13 @@ database_db       = os.getenv("DB_NAME")
 import urllib.parse
 encoded_password = urllib.parse.quote(database_password)
 
-connection_string = f"mssql+pymssql://{database_user}:{encoded_password}@{database_server}:1433/{database_db}"
+connection_string = f"mysql+pymysql://{database_user}:{encoded_password}@{database_server}:3333/{database_db}"
 
-#Include tables
+#Include tabless
 include_tables=[ 
-#                'TEMP_TB_QMS_DYN_VEND_RESULT',
-#                'TB_QMS_COMM_FILE', 
-#                'TB_QMS_DYN_ACTIVITY',
-#                'TB_QMS_DYN_ATTACH_CONTENTS',
-#                'TB_QMS_DYN_AUTO_EMAIL',
-#                'TB_QMS_DYN_AUTO_EMAIL_NBALIVE21',
-#                'TB_QMS_DYN_DEFECT_STATUS_CR',
-#                'TB_QMS_DYN_ENV_CHECK',
-                'TB_QMS_DYN_EVENT',
-                'TB_QMS_DYN_FINAL_INSP',
-                'TB_QMS_DYN_FINAL_INSP_DEF',
-#                'TB_QMS_DYN_FINAL_INSP_MEAS',
-#                'TB_QMS_DYN_IMP_INSP',
-#                'TB_QMS_DYN_IMP_INSP_DEF',
-#                'TB_QMS_DYN_IMP_INSP_MEAS',
-                'TB_QMS_DYN_MEETING_MEM',
-#                'TB_QMS_DYN_REJECT',
-#                'TB_QMS_DYN_ROUTE_INSP',
-#                'TB_QMS_DYN_ROUTE_INSP_DEF',
-#                'TB_QMS_DYN_ROUTE_INSP_MEAS',
-#                'TB_QMS_DYN_VEND_RESULT',
-                'TB_QMS_MAP_BP_ITEM',
-#                'TB_QMS_MAP_MENU_DIM',
-#                'TB_QMS_MAP_MENU_MEAS',
-#                'TB_QMS_MAP_ROLE_MENU_ACTION',
-#                'TB_QMS_MAP_USER_MENU_DIM',
-#                'TB_QMS_MAP_USER_MENU_MEAS',
-                'TB_QMS_MAP_USER_ROLE',
-#                'TB_QMS_MAP_VEND_BCD',
-                'TB_QMS_MST_ANNUAL_TARGET',
-#                'TB_QMS_MST_CODE',
-                'TB_QMS_MST_COORDI',
-#                'TB_QMS_MST_DIM',
-#                'TB_QMS_MST_EMAIL_AUTH',
-#                'TB_QMS_MST_EVENT_MAPPING',
-#                'TB_QMS_MST_INSP',
-#                'TB_QMS_MST_INSP_ROUTE',
-#                'TB_QMS_MST_ITEM_DRAW_REV_INFO',
-#                'TB_QMS_MST_ITEM_INSP',
-#                'TB_QMS_MST_MEAS',
-#                'TB_QMS_MST_MENU',
-#                'TB_QMS_MST_MENU_FAVORITES',
-#                'TB_QMS_MST_NOTICE',
-                'TB_QMS_MST_ROLE',
-#                'TB_QMS_MST_TRANSLATE',
-                'TB_QMS_MST_USER',
-#                'TB_QMS_MST_USER_ATTB',
-#                'TB_QMS_MST_VEND',
-#                'TB_QMS_MST_VEND_TAR'
+    'googleplaystore',
+    'AppleStore',
+    'appleStore_description'
  ]
 
 openai_api_key = os.getenv("OPENAI_API_KEY")
